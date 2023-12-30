@@ -124,4 +124,4 @@ const GenericAvatar = ({ width, height }) => {
   );
 };
 
-export default Car;
+export default GenericAvatar;
