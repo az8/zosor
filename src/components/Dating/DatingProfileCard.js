@@ -1,7 +1,6 @@
 import { Box, Card, CardActionArea, CardHeader, CardContent, CardMedia, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import WavingHandIcon from '@mui/icons-material/WavingHand';
-import HandshakeIcon from '@mui/icons-material/Handshake';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import HeightIcon from '@mui/icons-material/Height';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
@@ -35,8 +34,6 @@ const DatingProfileCard = ({
 
   const handleWave = (profileId) => {
 
-    // console.log("profileId", profileId);
-
     // Get recent waves from local storage
     let wavedProfiles = JSON.parse(window.localStorage.getItem('wavedProfiles')) || [];
 
@@ -53,7 +50,7 @@ const DatingProfileCard = ({
     window.localStorage.setItem('wavedProfiles', JSON.stringify(wavedProfiles));
     setWavedProfilesStorage(wavedProfiles);
 
-    reduxDispatch(postDatingWave({profileId: profileId})).then(res => {
+    reduxDispatch(postDatingWave({ profileId: profileId })).then(res => {
       if (res["type"].includes("fulfilled")) {
         if (res && res.payload) {
           console.log('Waved Successfully');
@@ -72,45 +69,27 @@ const DatingProfileCard = ({
   >
     <Card
       sx={{
-        // background: "#eeeeee",
-        // background: "#eeeeff",
-        // background: "#F6F6F6",
-        background: "#fafafa",
-        background: "#fcfcfc",
-        background: "#f3f6ff",
         background: "#fffaf3",
         color: "#35353e",
         minWidth: "320px",
         width: "500px",
-        // border: "1.5px solid #f5f5f5",
-        // border: "1.5px solid #FFFFFF",
-        // border: "1.5px solid #E7E7FF",
-        // boxShadow: "0px 2px 1px -1px rgba(0,0,0,0.01), 0px 1px 10px 0px rgba(0,0,0,0.14), 0px 1px 5px 1px rgba(0,0,0,0.01)",
         boxShadow: "none",
-        borderTopLeftRadius: "15px",
-        borderTopRightRadius: "15px",
-        border: "1px solid #f1f0f0",
-        border: "0.1px solid #dade0c",
-        border: "0.1px solid #d9d9d9",
-        border: "0.1px solid #e8e7e7",
+        borderRadius: "15px",
         border: "1px solid #eeeaea",
       }}
     >
       <CardHeader title={profileData && profileData?.name ? profileData?.name : "Name"}
         sx={{
-        background: "#a7bbff",
-        background: "#afb4e6",
-        borderTopLeftRadius: "15px",
-        borderTopRightRadius: "15px",
-       }}
+          background: "#ececec",
+        }}
       />
 
-      <CardContent>
+      <CardContent sx={{ py: 0 }}>
 
         <Stack
           direction="row"
           justifyContent={"center"}
-          sx={{ mt: 2, pt: 3 }}
+          sx={{ mt: 0, pb: 3, background: "#eaeaea", mx: "-16px" }}
         >
           <ProfilePicture image={avatarImage} />
         </Stack>
@@ -139,8 +118,8 @@ const DatingProfileCard = ({
             sx={{ mt: 2 }}
           > <HeightIcon sx={{ color: "#d8c2c2", mr: 1 }} />
             <Typography sx={{ fontSize: "18px", color: "#474747" }}>
-              {`${Math.floor((profileData?.height)/12)} ft ${profileData?.height % 12} inchs`}
-              </Typography>
+              {`${Math.floor((profileData?.height) / 12)} ft ${profileData?.height % 12} inchs`}
+            </Typography>
           </Stack>
         }
 
@@ -172,47 +151,48 @@ const DatingProfileCard = ({
         }
 
         <Stack
-          direction="row"
-          justifyContent={"center"}
-          sx={{ mt: 2, pt: 3, }}
+          sx={{ background: "#ececec", margin: "-16px", mt: 2, mb: "-24px" }}
         >
-          {wavedProfilesStorage
-            && Array.isArray(wavedProfilesStorage)
-            && wavedProfilesStorage?.includes(profileData?.profileId)
-            ?
-            <IconButton disabled sx={{ border: "1px solid #acbaea" }}>
-              <HourglassFullIcon
-                sx={{ color: "#6685f2", fontSize: "50px", }}
-              />
-            </IconButton>
 
-            :
-            <IconButton aria-label="delete"
-              onClick={() => handleWave(profileData?.profileId)}
-              sx={{ border: "1px solid #acbaea" }}
-            >
-              <WavingHandIcon
-                sx={{ color: "#6685f2", fontSize: "50px", }}
-
-              />
-            </IconButton>
-          }
-
-        </Stack>
-
-        <Stack
-          direction="row"
-          justifyContent={"center"}
-          sx={{ mt: 1 }}
-        >
-          <Typography sx={{ fontSize: "14px", color: "#474747" }}>
+          <Stack
+            direction="row"
+            justifyContent={"center"}
+            sx={{ pt: 2 }}
+          >
             {wavedProfilesStorage
               && Array.isArray(wavedProfilesStorage)
               && wavedProfilesStorage?.includes(profileData?.profileId)
-              ? `Waved ${profileData && profileData?.name ? profileData?.name: ""}`
-              : `Wave ${profileData && profileData?.name ? profileData?.name: ""}`
+              ?
+              <IconButton disabled>
+                <HourglassFullIcon
+                  sx={{ color: "#6685f2", fontSize: "50px", }}
+                />
+              </IconButton>
+
+              :
+              <IconButton aria-label="delete" onClick={() => handleWave(profileData?.profileId)}>
+                <WavingHandIcon
+                  sx={{ color: "#6685f2", fontSize: "50px", }}
+                />
+              </IconButton>
             }
-          </Typography>
+
+          </Stack>
+
+          <Stack
+            direction="row"
+            justifyContent={"center"}
+            sx={{ my: 1 }}
+          >
+            <Typography sx={{ fontSize: "14px", color: "#474747" }}>
+              {wavedProfilesStorage
+                && Array.isArray(wavedProfilesStorage)
+                && wavedProfilesStorage?.includes(profileData?.profileId)
+                ? `Waved ${profileData && profileData?.name ? profileData?.name : ""}`
+                : `Wave ${profileData && profileData?.name ? profileData?.name : ""}`
+              }
+            </Typography>
+          </Stack>
         </Stack>
 
       </CardContent>

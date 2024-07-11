@@ -7,7 +7,6 @@ import {
   getDatingFeedData,
 } from "../../redux/slices/sharedSlice";
 import DatingProfileCard from "./DatingProfileCard";
-import AcUnitIcon from '@mui/icons-material/AcUnit';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
 const Dating = (props) => {
@@ -67,12 +66,7 @@ const Dating = (props) => {
 
 
 
-  return <Stack justifyContent="center" sx={{
-    // background: "#614385", /* fallback for old browsers */
-    // background: "-webkit-linear-gradient(to right, #614385, #516395)", /* Chrome 10-25, Safari 5.1-6 */
-    // background: "linear-gradient(to right, #614385, #516395)",
-    // pb: 4,
-  }}>
+  return <Stack justifyContent="center">
     
     {datingFeedPageData?.map((datingItem, index) => (
       <Box key={`datingItem${index}`} sx={{mb: 8}}>
@@ -92,12 +86,7 @@ const Dating = (props) => {
       count={allPaginationPageCount}
       showFirstButton
       showLastButton
-      sx={{ mx: 7,
-        // "& .MuiPaginationItem-root": {
-        //   color: "#FFFFFF"
-        // },
-        mt: 4,
-      }}
+      sx={{ mx: 7, mt: 4 }}
       page={currentPaginationPage}
       onChange={handlePaginationChange}
     />
