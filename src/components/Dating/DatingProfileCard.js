@@ -75,17 +75,35 @@ const DatingProfileCard = ({
         // background: "#eeeeee",
         // background: "#eeeeff",
         // background: "#F6F6F6",
-        background: "#FFFFFF",
-        color: "#FFFFFF",
+        background: "#fafafa",
+        background: "#fcfcfc",
+        background: "#f3f6ff",
+        background: "#fffaf3",
+        color: "#35353e",
         minWidth: "320px",
         width: "500px",
         // border: "1.5px solid #f5f5f5",
         // border: "1.5px solid #FFFFFF",
         // border: "1.5px solid #E7E7FF",
-        boxShadow: "0px 2px 1px -1px rgba(0,0,0,0.01), 0px 1px 10px 0px rgba(0,0,0,0.14), 0px 1px 5px 1px rgba(0,0,0,0.01)",
+        // boxShadow: "0px 2px 1px -1px rgba(0,0,0,0.01), 0px 1px 10px 0px rgba(0,0,0,0.14), 0px 1px 5px 1px rgba(0,0,0,0.01)",
+        boxShadow: "none",
+        borderTopLeftRadius: "15px",
+        borderTopRightRadius: "15px",
+        border: "1px solid #f1f0f0",
+        border: "0.1px solid #dade0c",
+        border: "0.1px solid #d9d9d9",
+        border: "0.1px solid #e8e7e7",
+        border: "1px solid #eeeaea",
       }}
     >
-      <CardHeader title={profileData && profileData?.name ? profileData?.name : "Name"} sx={{ background: "#a7bbff" }} />
+      <CardHeader title={profileData && profileData?.name ? profileData?.name : "Name"}
+        sx={{
+        background: "#a7bbff",
+        background: "#afb4e6",
+        borderTopLeftRadius: "15px",
+        borderTopRightRadius: "15px",
+       }}
+      />
 
       <CardContent>
 
@@ -191,8 +209,8 @@ const DatingProfileCard = ({
             {wavedProfilesStorage
               && Array.isArray(wavedProfilesStorage)
               && wavedProfilesStorage?.includes(profileData?.profileId)
-              ? "Requested"
-              : "Wave"
+              ? `Waved ${profileData && profileData?.name ? profileData?.name: ""}`
+              : `Wave ${profileData && profileData?.name ? profileData?.name: ""}`
             }
           </Typography>
         </Stack>

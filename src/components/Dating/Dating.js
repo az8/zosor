@@ -7,6 +7,8 @@ import {
   getDatingFeedData,
 } from "../../redux/slices/sharedSlice";
 import DatingProfileCard from "./DatingProfileCard";
+import AcUnitIcon from '@mui/icons-material/AcUnit';
+import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
 const Dating = (props) => {
 
@@ -73,9 +75,18 @@ const Dating = (props) => {
   }}>
     
     {datingFeedPageData?.map((datingItem, index) => (
-      <React.Fragment key={`datingItem${index}`}>
+      <Box key={`datingItem${index}`} sx={{mb: 8}}>
         <DatingProfileCard profileData={datingItem} />
-      </React.Fragment>
+        {index < datingFeedPageData?.length - 1 &&
+        <Stack
+          direction="row"
+          justifyContent={"center"}
+          sx={{ mt: 2, pt: 1 }}
+        >
+          <HorizontalRuleIcon sx={{mt: 4, color: "#a7bbff", fontSize: "30px"}} />
+          </Stack>
+        }
+      </Box>
     ))}
     <Pagination
       count={allPaginationPageCount}
