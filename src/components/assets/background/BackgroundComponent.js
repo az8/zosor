@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
 
     background: "#faf9fd",
     background: "#fafafa",
+    background: "#faf7f7",
+    background: "#fffbfb",
 
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",

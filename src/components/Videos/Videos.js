@@ -65,30 +65,25 @@ const Videos = (props) => {
 
 
   return <Stack sx={{pb: 4}}>
-    <Grid container spacing={2} sx={{ width: "100%", m: 4, p: 0 }}>
+    <Grid container sx={{ width: "100%", m: 4, p: 0 }}>
       {
         videoFeedPageData?.map((feedItem, index) => (
-          <Grid item sx={{ margin: 3, mb: 1 }} key={`feedItem${index}`}
-          // xs={12} sm={6} lg={4}
+          <Grid item
+            sx={{ margin: 3, mb: 1, width:"350px", height:"550px", p: 0, background: "#1c1e21", borderRadius: "5px", }}
+            key={`feedItem${index}`}
           >
             <iframe
               src={feedItem}
-              // width="267"
-              // height="476"
               width="350"
               height="550"
               style={{
-                // outline: "8px solid #F7F7F7",
-                // outline: "#9194bf solid 8px",
-                // outline: "#E1E1E1 solid 4px",
                 overflow: "hidden",
                 borderRadius: "5px",
               }}
               scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
+              frameBorder="0"
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              allowFullScreen="true"
+              allowFullScreen={true}
             ></iframe>
           </Grid>
         ))
