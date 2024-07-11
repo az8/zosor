@@ -25,10 +25,6 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  // useEffect(() => {
-  //   console.log("currentPage", currentPage);
-  // }, [currentPage]);
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -46,16 +42,7 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="static" sx={{
-      // boxShadow: "none",
       background: "#4b437d",
-      // background: "#413c5e",
-      // background: "#544f75",
-      // background: "#4d486c",
-      // background: "#4b4575",
-      // background: "#514b76",
-
-      // background: "#e0e0e0",
-      // background: "#f2f0f0",
       }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>

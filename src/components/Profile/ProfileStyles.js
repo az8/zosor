@@ -106,39 +106,38 @@ const pageHeaderStyles = {
 
 
 
-const  autocompleteStyles ={
+const autocompleteStyles = {
   width: "100%",
   "& input": { color: "#fff", },
   '& .MuiInputLabel-root.MuiInputLabel-formControl': { color: '#FFFFFF', },
 }
 
-const profileSectionStyles = { mt: 4, marginX: "20%", borderRadius: "5px",
-// border: "1px solid #FFFFFF",
-boxShadow: "0px 2px 1px -1px rgba(0,0,0,0.01), 0px 1px 3px 0px rgba(0,0,0,0.14), 0px 1px 1px 1px rgba(0,0,0,0.01)",
+const profileSectionStyles = {
+  mt: 4, marginX: "20%", borderRadius: "5px",
+  boxShadow: "0px 2px 1px -1px rgba(0,0,0,0.01), 0px 1px 3px 0px rgba(0,0,0,0.14), 0px 1px 1px 1px rgba(0,0,0,0.01)",
 }
 
 
 
 const legendBox = {
-  color: "#FFFFFF",
-  background: "#a7bbff",
+  color: "#35353e",
+  background: "#f6f3f3",
   p: 2,
   borderTopLeftRadius: "5px",
   borderTopRightRadius: "5px",
   fontSize: "20px"
 };
 
-const profileInputStyles = { color: "#494949",
-background: "#f6f6f6",
-border: "none",
-'& .MuiFilledInput-root': {
-  backgroundColor: "#f6f6f6",
-  backgroundColor: "#FFFFFF",
-  paddingBottom: "15px",
-  // '& :hover': {
-  //   backgroundColor: "#f1f1f1",
-  // }
-},
+const profileInputStyles = {
+  color: "#494949",
+  background: "#f6f6f6",
+  border: "none",
+  '& .MuiFilledInput-root': {
+    backgroundColor: "#f6f6f6",
+    backgroundColor: "#FFFFFF",
+    paddingBottom: "15px",
+
+  },
 };
 
 export const ProfileStyles = {
