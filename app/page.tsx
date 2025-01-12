@@ -7,7 +7,7 @@ export default function Home() {
     const router = useRouter();
 
     useEffect(() => {
-        router.push("/1")
+        router.push("/videos")
       }, []);
       
     return
