@@ -5,49 +5,49 @@ import Stack from "@mui/material/Stack";
 import React, { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch, useAppStore } from '../../lib/redux/hooks';
 import {
-  getDatingFeedData,
+  getMetalverseFeedData,
 } from "../../lib/redux/slices/sharedSlice";
-import DatingProfileCard from "./DatingProfileCard";
+import MetalverseProfileCard from "./MetalverseProfileCard";
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
-const Dating = (props) => {
+const Metalverse = (props) => {
 
   const reduxDispatch = useAppDispatch();
 
-  const datingFeedData = useAppSelector((state) => state.shared.datingFeedData);
+  const metalverseFeedData = useAppSelector((state) => state.shared.metalverseFeedData);
 
   const [currentPaginationPage, setCurrentPaginationPage] = useState(1);
   const [allPaginationPageCount, setAllPaginationPageCount] = useState(1);
-  const [datingFeedPageData, setDatingFeedPageData] = useState([]);
+  const [metalverseFeedPageData, setMetalverseFeedPageData] = useState([]);
 
   useEffect(() => {
     setCurrentPaginationPage(1);
     setAllPaginationPageCount(
-      datingFeedData
-        && Array.isArray(datingFeedData)
-        && datingFeedData?.length > 0
-        ? Math.ceil(datingFeedData?.length / 10)
+      metalverseFeedData
+        && Array.isArray(metalverseFeedData)
+        && metalverseFeedData?.length > 0
+        ? Math.ceil(metalverseFeedData?.length / 10)
         : 1
     );
-    setDatingFeedPageData(
-      datingFeedData
-        && Array.isArray(datingFeedData)
-        && datingFeedData?.length > 0
-        ? datingFeedData?.slice(0, 10)
+    setMetalverseFeedPageData(
+      metalverseFeedData
+        && Array.isArray(metalverseFeedData)
+        && metalverseFeedData?.length > 0
+        ? metalverseFeedData?.slice(0, 10)
         : []
     );
-  }, [datingFeedData]);
+  }, [metalverseFeedData]);
 
   useEffect(() => {
-    document.title = "Dating | Zosor"
+    document.title = "Metalverse | Zosor"
 
-    reduxDispatch(getDatingFeedData()).then(res => {
+    reduxDispatch(getMetalverseFeedData()).then(res => {
       if (res["type"].includes("fulfilled")) {
         if (res && res.payload) {
-          console.log('Dating feed data fetched');
+          console.log('Metalverse feed data fetched');
         }
       } else if (res["type"].includes("rejected")) {
-        console.log('Fetching Dating feed data failed');
+        console.log('Fetching Metalverse feed data failed');
       }
     });
   }, []);
@@ -55,11 +55,11 @@ const Dating = (props) => {
 
   const handlePaginationChange = (event, value) => {
     setCurrentPaginationPage(value);
-    setDatingFeedPageData(
-      datingFeedData
-        && Array.isArray(datingFeedData)
-        && datingFeedData?.length > 0
-        ? datingFeedData?.slice((value - 1) * 10, value * 10)
+    setMetalverseFeedPageData(
+      metalverseFeedData
+        && Array.isArray(metalverseFeedData)
+        && metalverseFeedData?.length > 0
+        ? metalverseFeedData?.slice((value - 1) * 10, value * 10)
         : []
     );
   };
@@ -69,10 +69,10 @@ const Dating = (props) => {
 
   return <Stack justifyContent="center">
     
-    {datingFeedPageData?.map((datingItem, index) => (
-      <Box key={`datingItem${index}`} sx={{mb: 8}}>
-        <DatingProfileCard profileData={datingItem} />
-        {index < datingFeedPageData?.length - 1 &&
+    {metalverseFeedPageData?.map((metalItem, index) => (
+      <Box key={`metalverseItem${index}`} sx={{mb: 8}}>
+        <MetalverseProfileCard profileData={metalItem} />
+        {index < metalverseFeedPageData?.length - 1 &&
         <Stack
           direction="row"
           justifyContent={"center"}
@@ -94,4 +94,4 @@ const Dating = (props) => {
   </Stack >
 };
 
-export default Dating;
+export default Metalverse;

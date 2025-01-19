@@ -5,7 +5,6 @@ import "./globals.css";
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
-import Sidebar from "./Sidebar";
 import StoreProvider from "./StoreProvider";
 import AppBar from "../lib/components/AppBar/AppBar";
 
