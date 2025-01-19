@@ -9,11 +9,11 @@ import NotesIcon from '@mui/icons-material/Notes';
 import HourglassFullIcon from '@mui/icons-material/HourglassFull';
 import { useDispatch, useSelector } from "react-redux";
 import IconButton from '@mui/material/IconButton';
-import { postDatingWave } from "../../lib/redux/slices/sharedSlice";
+import { postMetalverseWave } from "../../lib/redux/slices/sharedSlice";
 import ProfilePicture from "../../lib/components/ProfilePicture/ProfilePicture";
 
 
-const DatingProfileCard = ({
+const MetalverseProfileCard = ({
   profileData = {},
   loading = false,
 }) => {
@@ -44,7 +44,7 @@ const DatingProfileCard = ({
     window.localStorage.setItem('wavedProfiles', JSON.stringify(wavedProfiles));
     setWavedProfilesStorage(wavedProfiles);
 
-    reduxDispatch(postDatingWave({ profileId: profileId })).then(res => {
+    reduxDispatch(postMetalverseWave({ profileId: profileId })).then(res => {
       if (res["type"].includes("fulfilled")) {
         if (res && res.payload) {
           console.log('Waved Successfully');
@@ -86,11 +86,6 @@ const DatingProfileCard = ({
           sx={{ mt: 0, pb: 3, background: "#f9f9f9", mx: "-16px" }}
         >
           <ProfilePicture image={"/cutecoala.jpg"} />
-          {/* <Image
-            src="/cutecoala.jpg"
-            alt="Description of the image"
-            width={500} height={300}
-          /> */}
         </Stack>
 
         {profileData && profileData?.age &&
@@ -200,4 +195,4 @@ const DatingProfileCard = ({
   );
 }
 
-export default DatingProfileCard;
+export default MetalverseProfileCard;

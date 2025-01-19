@@ -69,13 +69,13 @@ const Videos = (props) => {
   return <Stack sx={{pb: 4}}>
     <Grid container sx={{ width: "100%", m: 4, p: 0 }}>
       {
-        videoFeedPageData?.map((feedItem, index) => (
+        videoFeedPageData?.map((video) => (
           <Grid item
             sx={{ margin: 3, mb: 1, width:"352px", height:"550px", p: 0, background: "#f5f5f5", borderRadius: "5px",}}
-            key={`feedItem${index}`}
+            key={`videoFeedItem${video?.id}`}
           >
             <iframe
-              src={feedItem}
+              src={video?.url}
               width="350"
               height="550"
               style={{
