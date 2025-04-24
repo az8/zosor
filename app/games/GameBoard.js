@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Button, Typography } from "@mui/material";
 import "./GameBoard.css";
 
 const ROWS = 20;
@@ -69,13 +70,18 @@ function GameBoard({ updateHighestScore, gameStarted, setGameStarted }) {
         setPaused((prev) => !prev);
     };
 
+    useEffect(() => {
+        if (gameStarted && !currentBlock && !gameOver) {
+          spawnNewBlock();
+        }
+      }, [gameStarted, currentBlock, gameOver]);
+
     const startGame = () => {
         setGameStarted(true);
         setGameOver(false);
         setPaused(false);
         setScore(0);
         setBoard(generateBoard());
-        spawnNewBlock(); // spawn first block
     };
 
     const moveDown = () => {
@@ -178,11 +184,13 @@ function GameBoard({ updateHighestScore, gameStarted, setGameStarted }) {
     return (
         <div>
             <div className="game-controls">
-                <button onClick={!gameStarted || gameOver ? startGame : () => {
-                    if (gameStarted) togglePause();
-                }}>
+                <Button
+                    variant="outlined"
+                    onClick={!gameStarted || gameOver ? startGame : () => {
+                        if (gameStarted) togglePause();
+                    }}>
                     {!gameStarted || gameOver ? "Start Game" : paused ? "Resume" : "Pause"}
-                </button>
+                </Button>
             </div>
             <div className="game-board">
                 {mergedBoard.map((row, rowIndex) => (
@@ -193,8 +201,8 @@ function GameBoard({ updateHighestScore, gameStarted, setGameStarted }) {
                     </div>
                 ))}
             </div>
-            <h2>Score: {score}</h2>
-            {gameOver && <h2>Game Over</h2>}
+            <Typography variant="overline" sx={{ display: "block", fontSize: "16px", mt: 2 }}>Score: {score}</Typography>
+            {gameOver && <Typography variant="overline" sx={{ fontSize: "16px", color: "#ab4444" }}>Game Over</Typography>}
         </div>
     );
 }

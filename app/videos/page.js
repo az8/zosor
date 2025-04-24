@@ -23,18 +23,18 @@ const Videos = (props) => {
     setCurrentPaginationPage(1);
     setAllPaginationPageCount(
       videoFeedData
-      && Array.isArray(videoFeedData)
-      && videoFeedData?.length > 0
-      ? Math.ceil(videoFeedData?.length / 10)
-      : 1
+        && Array.isArray(videoFeedData)
+        && videoFeedData?.length > 0
+        ? Math.ceil(videoFeedData?.length / 10)
+        : 1
     );
     setVideoFeedPageData(
       videoFeedData
-      && Array.isArray(videoFeedData)
-      && videoFeedData?.length > 0
-      ? videoFeedData?.slice(0, 10)
-      : []
-      );
+        && Array.isArray(videoFeedData)
+        && videoFeedData?.length > 0
+        ? videoFeedData?.slice(0, 10)
+        : []
+    );
   }, [videoFeedData]);
 
   useEffect(() => {
@@ -56,22 +56,22 @@ const Videos = (props) => {
     setCurrentPaginationPage(value);
     setVideoFeedPageData(
       videoFeedData
-      && Array.isArray(videoFeedData)
-      && videoFeedData?.length > 0
-      ? videoFeedData?.slice((value - 1) * 10, value * 10)
-      : []
-      );
+        && Array.isArray(videoFeedData)
+        && videoFeedData?.length > 0
+        ? videoFeedData?.slice((value - 1) * 10, value * 10)
+        : []
+    );
   };
 
 
 
 
-  return <Stack sx={{pb: 4}}>
+  return <Stack sx={{ pb: 4 }}>
     <Grid container sx={{ width: "100%", m: 4, p: 0 }}>
       {
         videoFeedPageData?.map((video) => (
           <Grid item
-            sx={{ margin: 3, mb: 1, width:"352px", height:"550px", p: 0, background: "#f5f5f5", borderRadius: "5px",}}
+            sx={{ margin: 3, mb: 1, width: "352px", height: "550px", p: 0, background: "#f5f5f5", borderRadius: "5px", }}
             key={`videoFeedItem${video?.id}`}
           >
             <iframe
@@ -91,14 +91,16 @@ const Videos = (props) => {
         ))
       }
     </Grid>
-    <Pagination
-      count={allPaginationPageCount}
-      showFirstButton
-      showLastButton
-      sx={{mx: 7}}
-      page={currentPaginationPage}
-      onChange={handlePaginationChange}
-    />
+    {allPaginationPageCount > 1 &&
+      <Pagination
+        count={allPaginationPageCount}
+        showFirstButton
+        showLastButton
+        sx={{ mx: 7 }}
+        page={currentPaginationPage}
+        onChange={handlePaginationChange}
+      />
+    }
   </Stack>
 };
 
