@@ -24,7 +24,7 @@ export default function RootLayout({
 
   useEffect(() => {
     document.title = "Zosor";
-    const path = pathname?.split("/")[1] ? pathname?.split("/")[1] : "videos";
+    const path = pathname?.split("/")[1] ? pathname?.split("/")[1] : "games";
   }, [pathname]);
 
   return (

@@ -47,10 +47,10 @@ th {
   text-align: left;
 }
 
-* {
+/* * {
   padding: 2px;
   margin: 1px;
-}
+} */
 
 tr, th, td  {
   padding: 10px;
