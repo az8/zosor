@@ -2,10 +2,7 @@ import { IEntityVideo } from '@/lib/types/videos/IEntityVideo';
 
 
 export const videoFeedData: IEntityVideo[] = [
-    {
-        id: "18",
-        url: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fticosound%2Fvideos%2F586972497381804%2F&show_text=false&width=266&t=0"
-    },
+
     {
         id: "17",
         url: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F401747173024350%2F&show_text=false&width=267&t=0"
