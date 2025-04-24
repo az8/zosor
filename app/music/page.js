@@ -58,16 +58,17 @@ const Music = (props) => {
     </Stack>
 
     <Stack direction="row" justifyContent={"center"}
-      sx={{ p: "40px", background: "", m: "10%", my: 4, borderRadius: "5px" }}>
+      sx={{ p: "40px", mx: "10%", my: "2%" }}>
       <TextField
         id="music-for-submission"
-        label="Enter link of your online music"
+        placeholder="Enter link of your online music"
         value={musicForSubmission}
         onChange={(event) => {
           setMusicForSubmission(event.target.value);
         }}
-        sx={{ width: "100%", background: "#FFFFFF", }}
+        sx={{ width: "100%", background: "#FFFFFF"}}
         autoComplete="off"
+        variant="filled"
       />
     </Stack>
 

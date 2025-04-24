@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button, Typography } from "@mui/material";
+import Controls from "./Controls";
 import "./GameBoard.css";
 
 const ROWS = 20;
@@ -72,9 +73,9 @@ function GameBoard({ updateHighestScore, gameStarted, setGameStarted }) {
 
     useEffect(() => {
         if (gameStarted && !currentBlock && !gameOver) {
-          spawnNewBlock();
+            spawnNewBlock();
         }
-      }, [gameStarted, currentBlock, gameOver]);
+    }, [gameStarted, currentBlock, gameOver]);
 
     const startGame = () => {
         setGameStarted(true);
@@ -203,6 +204,12 @@ function GameBoard({ updateHighestScore, gameStarted, setGameStarted }) {
             </div>
             <Typography variant="overline" sx={{ display: "block", fontSize: "16px", mt: 2 }}>Score: {score}</Typography>
             {gameOver && <Typography variant="overline" sx={{ fontSize: "16px", color: "#ab4444" }}>Game Over</Typography>}
+            <Controls
+                onUp={rotateBlock}
+                onDown={moveDown}
+                onLeft={() => moveBlock(-1)}
+                onRight={() => moveBlock(1)}
+            />
         </div>
     );
 }
