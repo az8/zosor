@@ -7,13 +7,13 @@ import { Typography } from "@mui/material";
 function GamePage() {
   const [gameStarted, setGameStarted] = useState(false);
   const [highestScore, setHighestScore] = useState(
-    localStorage.getItem("highestScore") || 0
+    window?.localStorage?.getItem("highestScore") || 0
   );
 
   const updateHighestScore = (score) => {
     if (score > highestScore) {
       setHighestScore(score);
-      localStorage.setItem("highestScore", score);
+      window?.localStorage?.setItem("highestScore", score);
     }
   };
 
