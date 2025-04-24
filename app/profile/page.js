@@ -3,7 +3,6 @@ import { Box, Checkbox, TextField, Typography } from "@mui/material";
 
 import Stack from "@mui/material/Stack";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import ProfilePicture from "../../lib/components/ProfilePicture/ProfilePicture";
 import ProfileSection from "./ProfileSection";
@@ -12,8 +11,6 @@ import { multiline } from "./ProfileConstants";
 
 
 const Profile = (props) => {
-
-  const reduxDispatch = useDispatch();
 
   const [profileData, setProfileData] = useState({});
 
