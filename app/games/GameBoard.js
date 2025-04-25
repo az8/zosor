@@ -202,14 +202,16 @@ function GameBoard({ updateHighestScore, gameStarted, setGameStarted }) {
                     </div>
                 ))}
             </div>
-            <Typography variant="overline" sx={{ display: "block", fontSize: "16px", mt: 2 }}>Score: {score}</Typography>
+            <Typography variant="overline" sx={{ display: "block", fontSize: "16px", mt: 2, color: "#5e5a5a" }}>Score: {score}</Typography>
             {gameOver && <Typography variant="overline" sx={{ fontSize: "16px", color: "#ab4444" }}>Game Over</Typography>}
-            <Controls
-                onUp={rotateBlock}
-                onDown={moveDown}
-                onLeft={() => moveBlock(-1)}
-                onRight={() => moveBlock(1)}
-            />
+            {gameStarted &&
+                <Controls
+                    onUp={rotateBlock}
+                    onDown={moveDown}
+                    onLeft={() => moveBlock(-1)}
+                    onRight={() => moveBlock(1)}
+                />
+            }
         </div>
     );
 }

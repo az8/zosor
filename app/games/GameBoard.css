@@ -7,7 +7,6 @@
     background-color: #b9b9b9;
     width: 209px;
     height: 419px;
-    /* border: 2px solid white; */
   }
   
   .row {
@@ -18,7 +17,6 @@
     width: 20px;
     height: 20px;
     background-color: lightgray;
-    /* border: 1px solid #222; */
   }
   
   .filled {
