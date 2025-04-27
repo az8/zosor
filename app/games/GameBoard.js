@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Controls from "./Controls";
 import "./GameBoard.css";
 
@@ -67,7 +67,6 @@ function GameBoard({ updateHighestScore, gameStarted, setGameStarted }) {
     }, [currentBlock, gameOver, paused]);
 
     const togglePause = () => {
-        console.log("togglePause called");
         setPaused((prev) => !prev);
     };
 
@@ -184,32 +183,32 @@ function GameBoard({ updateHighestScore, gameStarted, setGameStarted }) {
 
     return (
         <div>
-            <div className="game-controls">
-                <Button
-                    variant="outlined"
-                    onClick={!gameStarted || gameOver ? startGame : () => {
-                        if (gameStarted) togglePause();
-                    }}>
-                    {!gameStarted || gameOver ? "Start Game" : paused ? "Resume" : "Pause"}
-                </Button>
-            </div>
             <div className="game-board">
-                {mergedBoard.map((row, rowIndex) => (
-                    <div key={rowIndex} className="row">
-                        {row.map((cell, colIndex) => (
-                            <div key={colIndex} className={`cell ${cell ? "filled" : ""}`} />
-                        ))}
+                <>
+                    {mergedBoard.map((row, rowIndex) => (
+                        <div key={rowIndex} className="row">
+                            {row.map((cell, colIndex) => (
+                                <div key={colIndex} className={`cell ${cell ? "filled" : ""}`} />
+                            ))}
+                        </div>
+                    ))}
+                </>
+                {(!gameStarted || gameOver) &&
+                    <div className="game-controls" onClick={startGame}>
+                        <span>{"▶"}</span>
                     </div>
-                ))}
+                }
             </div>
             <Typography variant="overline" sx={{ display: "block", fontSize: "16px", mt: 2, color: "#5e5a5a" }}>Score: {score}</Typography>
             {gameOver && <Typography variant="overline" sx={{ fontSize: "16px", color: "#ab4444" }}>Game Over</Typography>}
-            {gameStarted &&
+            {(gameStarted && !gameOver) &&
                 <Controls
                     onUp={rotateBlock}
                     onDown={moveDown}
                     onLeft={() => moveBlock(-1)}
                     onRight={() => moveBlock(1)}
+                    onCenter={togglePause}
+                    centerState={paused}
                 />
             }
         </div>
