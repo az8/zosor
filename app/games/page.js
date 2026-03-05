@@ -1,42 +1,122 @@
-"use client"
-import React, { useEffect, useState } from "react";
-import Stack from "@mui/material/Stack";
-import GameBoard from "./GameBoard";
-import { Typography } from "@mui/material";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
+import BrickGame from "./brickgame/BrickGame";
+import BlockRacingGame from "./blockracinggame/BlockRacingGame";
+import Pagination from "@mui/material/Pagination";
+
+const TOTAL_PAGES = 2;
+
+const containerStyle = {
+  height: "100vh",
+  width: "100%",
+  overflow: "hidden",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative",
+};
 
 function GamePage() {
-  const [gameStarted, setGameStarted] = useState(false);
-  const [highestScore, setHighestScore] = useState(0);
+  // 0-based internally
+  const [currentPage, setCurrentPage] = useState(0);
 
+  const isScrolling = useRef(false);
+  const touchStartY = useRef(null);
+
+  // Centralized page setter (used by scroll + pagination)
+  const goToPage = (newPage) => {
+    if (isScrolling.current) return;
+    if (newPage < 0 || newPage >= TOTAL_PAGES) return;
+
+    isScrolling.current = true;
+    setCurrentPage(newPage);
+
+    setTimeout(() => {
+      isScrolling.current = false;
+    }, 600);
+  };
+
+  const changeByDirection = (direction) => {
+    goToPage(currentPage + direction);
+  };
+
+  // Mouse wheel
   useEffect(() => {
-    setHighestScore(window?.localStorage?.getItem("highestScore")
-      ? window?.localStorage?.getItem("highestScore")
-      : 0);
-  }, []);
+    const handleWheel = (e) => {
+      if (e.deltaY > 0) {
+        changeByDirection(1);
+      } else if (e.deltaY < 0) {
+        changeByDirection(-1);
+      }
+    };
 
-  const updateHighestScore = (score) => {
-    if (score > highestScore) {
-      setHighestScore(score);
-      window?.localStorage?.setItem("highestScore", score);
-    }
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [currentPage]);
+
+  // Touch support
+  useEffect(() => {
+    const handleTouchStart = (e) => {
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      if (touchStartY.current === null) return;
+
+      const deltaY =
+        touchStartY.current - e.changedTouches[0].clientY;
+
+      if (Math.abs(deltaY) > 50) {
+        if (deltaY > 0) {
+          changeByDirection(1);
+        } else {
+          changeByDirection(-1);
+        }
+      }
+
+      touchStartY.current = null;
+    };
+
+    window.addEventListener("touchstart", handleTouchStart, {
+      passive: true,
+    });
+    window.addEventListener("touchend", handleTouchEnd, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [currentPage]);
+
+  // MUI Pagination (1-based)
+  const handlePageChange = (event, value) => {
+    goToPage(value - 1); // convert to 0-based
   };
 
   return (
-    <Stack justifyContent="center" direction={"row"} sx={{ m: 8 }}>
-      <Stack justifyContent="center" direction={"row"} sx={{ width: "500px", background: "#fafafa", borderRadius: "25px", border: "1px solid #f6f6f6" }}>
-        <div style={{ width: "200px" }}>
-          <Typography variant="overline" gutterBottom sx={{ display: 'block', fontSize: "20px", color: "#5e5a5a" }}>Block Game</Typography>
-          <GameBoard
-            updateHighestScore={updateHighestScore}
-            gameStarted={gameStarted}
-            setGameStarted={setGameStarted}
-          />
-          <Typography variant="overline" gutterBottom sx={{ display: 'block', fontSize: "16px", color: "#5e5a5a" }}>Highest Score: {highestScore}</Typography>
-        </div>
-      </Stack>
-    </Stack>
+    <div style={containerStyle}>
+      {/* Mounted page */}
+      {currentPage === 0 && <BrickGame />}
+      {currentPage === 1 && <BlockRacingGame />}
+
+      {/* Pagination */}
+      <Pagination
+        count={TOTAL_PAGES}
+        page={currentPage + 1} // convert to 1-based
+        onChange={handlePageChange}
+        size="small"
+        showFirstButton
+        showLastButton
+        sx={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+        }}
+      />
+    </div>
   );
 }
 
 export default GamePage;
-
