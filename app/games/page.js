@@ -40,6 +40,10 @@ function GamePage() {
     goToPage(currentPage + direction);
   };
 
+  useEffect(() => {
+    document.title = "Games | Zosor";
+  }, []);
+
   // Mouse wheel
   useEffect(() => {
     const handleWheel = (e) => {
