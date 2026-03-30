@@ -8,6 +8,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import { styled, useTheme } from '@mui/material/styles';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
@@ -15,6 +16,7 @@ import { usePathname } from 'next/navigation'
 const pages = [
   { name: 'music', icon: <MusicNoteIcon /> },
   { name: 'games', icon: <SportsEsportsIcon /> },
+  { name: 'connect', icon: <SupportAgentIcon /> }
 ];
 
 

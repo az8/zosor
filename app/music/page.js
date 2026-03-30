@@ -39,7 +39,7 @@ const Music = (props) => {
   }, [musicFeedData]);
 
   useEffect(() => {
-    document.title = "Music | Zosor"
+    document.title = "Music | Zosor";
 
     reduxDispatch(getMusicFeedData()).then(res => {
       if (res["type"].includes("fulfilled")) {
