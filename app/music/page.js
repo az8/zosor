@@ -254,15 +254,15 @@ export default function Music() {
               <MUI.Grid key={t.id} item sx={{ width: "100%", mb: 1 }}>
                 <MUI.Box sx={{ p: 1.5, background: isCurrent ? "#f0f2ff" : "#f9f9f9", borderRadius: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <MUI.Stack>
-                    <MUI.Typography style ={{fontSize: isCurrent ? "1.5rem" : "1rem", color: isCurrent ? "#363467" : "#000000" }}>{t.title}</MUI.Typography>
+                    <MUI.Typography style ={{fontSize: isCurrent ? "1.2rem" : "1rem", color: isCurrent ? "#363467" : "#000000" }}>{t.title}</MUI.Typography>
                     <MUI.Stack direction="row" alignItems="center">
                       <MUI.Typography sx={{ mr: 1, fontSize: '0.8rem' }}>{t.rating || 0}</MUI.Typography>
-                      <MUI.StyledRating value={t.rating || 0} readOnly size="small" icon={<MusicIcons.FavoriteIcon fontSize="inherit"/>} emptyIcon={<MusicIcons.FavoriteBorderIcon fontSize="inherit" />} $fillColor={isCurrent ? "#7973d5" : ""} />
+                      <MUI.StyledRating value={t.rating || 0} readOnly size="small" icon={<MusicIcons.FavoriteIcon fontSize="inherit"/>} emptyIcon={<MusicIcons.FavoriteBorderIcon fontSize="inherit" />} $fillColor={isCurrent ? "#8f89ef" : ""} />
                     </MUI.Stack>
                   </MUI.Stack>
                   <MUI.IconButton
                     onClick={() => isCurrent ? togglePlay() : playTrack(absoluteIndex)}
-                    sx={{ width: "45px", height: "45px", background: isCurrent ? "#6662a8" : "#f55c67", "&:hover": { background: "#181f23" } }}
+                    sx={{ width: "45px", height: "45px", background: isCurrent ? "#938ee7" : "#f55c67", "&:hover": { background: "#181f23" } }}
                   >
                     {isCurrent && isPlaying ? <MusicIcons.PauseIcon sx={{ color: "#FFF" }} /> : <MusicIcons.PlayArrowIcon sx={{ color: "#FFF" }} />}
                   </MUI.IconButton>

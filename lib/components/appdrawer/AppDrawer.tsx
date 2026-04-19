@@ -6,9 +6,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MusicNoteIcon from '@mui/icons-material/MusicNote';
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import {
+  MusicNote as MusicNoteIcon,
+  SportsEsports as SportsEsportsIcon,
+  SupportAgent as SupportAgentIcon } from '@mui/icons-material';
 import { styled, useTheme } from '@mui/material/styles';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
