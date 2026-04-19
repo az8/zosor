@@ -9,7 +9,6 @@ import AppDrawer from "../lib/components/appdrawer/AppDrawer";
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import { styled, useTheme } from '@mui/material/styles';
-import AppSwitchShortcut from "../lib/components/appswitchshortcut/AppSwitchShortcut";
 import AppDrawerToggle from "../lib/components/appdrawertoggle/AppDrawerToggle";
 
 

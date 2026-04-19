@@ -2,9 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Stack from "@mui/material/Stack";
 import { Typography } from "@mui/material";
 import Settings from "./Settings";
-import SettingsIcon from '@mui/icons-material/Settings';
+import { Settings as SettingsIcon, PlayArrow as PlayArrowIcon } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 /*
 Game constants

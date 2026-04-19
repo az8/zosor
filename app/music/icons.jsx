@@ -1,14 +1,15 @@
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import PauseIcon from "@mui/icons-material/Pause";
-import SkipNextIcon from "@mui/icons-material/SkipNext";
-import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
-import ShuffleIcon from "@mui/icons-material/Shuffle";
-import RepeatIcon from "@mui/icons-material/Repeat";
-import RepeatOneIcon from "@mui/icons-material/RepeatOne";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import VolumeOffIcon from "@mui/icons-material/VolumeOff";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import {
+  PlayArrow as PlayArrowIcon,
+  Pause as PauseIcon,
+  SkipNext as SkipNextIcon,
+  SkipPrevious as SkipPreviousIcon,
+  Shuffle as ShuffleIcon,
+  Repeat as RepeatIcon,
+  RepeatOne as RepeatOneIcon,
+  VolumeUp as VolumeUpIcon,
+  VolumeOff as VolumeOffIcon,
+  Favorite as FavoriteIcon,
+  FavoriteBorder as FavoriteBorderIcon } from '@mui/icons-material';
 
 export const MusicIcons = {
   // Playback Controls

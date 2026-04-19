@@ -1,8 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Grid, Typography, Tooltip, IconButton, Stack } from "@mui/material";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { MailOutline as MailOutlineIcon, ContentCopy as ContentCopyIcon } from '@mui/icons-material';
 
 const Connect = () => {
   const email = "hi@zosor.com";
