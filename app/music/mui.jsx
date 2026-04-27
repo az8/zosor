@@ -1,11 +1,14 @@
 import {
+  Autocomplete,
+  Badge,
   Box,
   Grid,
-  Typography,
   IconButton,
   Rating,
   Slider,
   Stack,
+  TextField,
+  Typography,
 } from "@mui/material";
 import { styled } from '@mui/material/styles';
 
@@ -23,12 +26,15 @@ const StyledRating = styled(Rating, {
 
 export const MUI = {
   // mui
+  Autocomplete: Autocomplete,
+  Badge: Badge,
   Box: Box,
   Grid: Grid,
   IconButton: IconButton,
   Rating: Rating,
   Slider: Slider,
   Stack: Stack,
+  TextField: TextField,
   Typography: Typography,
   // Custom
   StyledRating: StyledRating

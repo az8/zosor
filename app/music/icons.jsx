@@ -1,4 +1,6 @@
 import {
+  ArrowBackIos as ArrowBackIosIcon,
+  ArrowForwardIos as ArrowForwardIosIcon,
   PlayArrow as PlayArrowIcon,
   Pause as PauseIcon,
   SkipNext as SkipNextIcon,
@@ -30,4 +32,8 @@ export const MusicIcons = {
   // Favorites
   FavoriteIcon: FavoriteIcon,
   FavoriteBorderIcon: FavoriteBorderIcon,
+
+  // Navigation
+  ArrowForwardIos: ArrowForwardIosIcon,
+  ArrowBackIos: ArrowBackIosIcon,
 };
