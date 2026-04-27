@@ -5,3 +5,8 @@ export interface IEntityMusic {
   rating?: number;
   releaseId?: string;
 }
+
+export interface IMusicFeedData {
+  allMusic: IEntityMusic[];
+  featuredMusic: IEntityMusic[];
+}
