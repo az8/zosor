@@ -52,7 +52,6 @@ export default function Music() {
 
     if (autoPlay) {
       playerRef.current.loadVideoById(videoId);
-      console.log("Reached 2");
     } else {
       playerRef.current.cueVideoById(videoId);
     }
@@ -251,18 +250,31 @@ export default function Music() {
             const absoluteIndex = (currentPaginationPage - 1) * 10 + i;
             const isCurrent = absoluteIndex === currentIndex;
             return (
-              <MUI.Grid key={t.id} item sx={{ width: "100%", mb: 1 }}>
-                <MUI.Box sx={{ p: 1.5, background: isCurrent ? "#f0f2ff" : "#f9f9f9", borderRadius: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <MUI.Grid key={t.id} item sx={{ width: "100%"}}>
+                <MUI.Box sx={{
+                  p: 1.5,
+                  background: isCurrent ? "#f0f2ffdb" : i % 2 === 0 ? "#fcfcfc" : "#fefefe",
+                  borderRadius: i === 0 
+                  ? "8px 8px 0 0" 
+                  : i === musicFeedPageData.length - 1 
+                    ? "0 0 8px 8px" 
+                    : 0,
+                  outline: "1px solid #e0e0e0",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center"
+                  }}
+                >
                   <MUI.Stack>
                     <MUI.Typography style ={{fontSize: isCurrent ? "1.2rem" : "1rem", color: isCurrent ? "#363467" : "#000000" }}>{t.title}</MUI.Typography>
                     <MUI.Stack direction="row" alignItems="center">
                       <MUI.Typography sx={{ mr: 1, fontSize: '0.8rem' }}>{t.rating || 0}</MUI.Typography>
-                      <MUI.StyledRating value={t.rating || 0} readOnly size="small" icon={<MusicIcons.FavoriteIcon fontSize="inherit"/>} emptyIcon={<MusicIcons.FavoriteBorderIcon fontSize="inherit" />} $fillColor={isCurrent ? "#8f89ef" : ""} />
+                      <MUI.StyledRating value={t.rating || 0} readOnly size="small" icon={<MusicIcons.FavoriteIcon fontSize="inherit"/>} emptyIcon={<MusicIcons.FavoriteBorderIcon fontSize="inherit" />} $fillColor={isCurrent ? "#a5a0f9" : "#ff878d"} />
                     </MUI.Stack>
                   </MUI.Stack>
                   <MUI.IconButton
                     onClick={() => isCurrent ? togglePlay() : playTrack(absoluteIndex)}
-                    sx={{ width: "45px", height: "45px", background: isCurrent ? "#938ee7" : "#f55c67", "&:hover": { background: "#181f23" } }}
+                    sx={{ width: "45px", height: "45px", background: isCurrent ? "#ada8ff" : "#ff7e88", "&:hover": { background: "#181f23" } }}
                   >
                     {isCurrent && isPlaying ? <MusicIcons.PauseIcon sx={{ color: "#FFF" }} /> : <MusicIcons.PlayArrowIcon sx={{ color: "#FFF" }} />}
                   </MUI.IconButton>
@@ -290,7 +302,7 @@ export default function Music() {
           <MUI.Typography sx={{ minWidth: 35 }} fontSize="11px">{MusicService.formatTime(Math.floor(duration))}</MUI.Typography>
         </MUI.Box>
 
-        <MUI.Box display="flex" alignItems="center" gap={1} mt={0.5}>
+        <MUI.Box display="flex" alignItems="center" gap={1} mt={0.5} justifyContent="center">
           <MUI.Box sx={{ width: 40, height: 40, borderRadius: 1, overflow: "hidden", flexShrink: 0 }}>
             <img src={thumbnail} alt="thumb" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </MUI.Box>
@@ -315,7 +327,7 @@ export default function Music() {
           </MUI.Box>
 
           {nextTrack && (
-            <MUI.Typography fontSize="10px" sx={{ ml: 'auto', opacity: 0.7, maxWidth: 100 }} noWrap>
+            <MUI.Typography fontSize="10px" sx={{ opacity: 0.7, maxWidth: 100 }} noWrap>
               Next: {nextTrack.title}
             </MUI.Typography>
           )}
